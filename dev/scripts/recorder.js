@@ -19,7 +19,6 @@ export default class SongRecorder extends React.Component{
             audio: true
         })
             .then(function(stream){
-
                 recorder = new MediaRecorder(stream);
                 recorder.start();
                 console.log("clicked");
@@ -32,13 +31,16 @@ export default class SongRecorder extends React.Component{
                 record: true,
                 // songData: chunks
             })
+            
+            function stop(recorder){
             if(this.state.record === false){
-                // recorder.start();
+                recorder.stop();
                 this.setState({
                     songData: chunks
                 })
             }
         };
+    }
 
     stopRecord(e){
         e.preventDefault();
